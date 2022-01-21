@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Address, Balance, Events } from "../components";
 
 export default function ExampleUI({
-  greeting,
+  counter,
   address,
   mainnetProvider,
   localProvider,
@@ -24,20 +24,16 @@ export default function ExampleUI({
       */}
       <div style={{ border: "1px solid #cccccc", padding: 16, width: 400, margin: "auto", marginTop: 64 }}>
         <h2>Example UI:</h2>
-        <h4>ing: {greeting}</h4>
+        <h4>ing: {counter}</h4>
         <Divider />
         <div style={{ margin: 8 }}>
-          <Input
-            onChange={e => {
-              setGreeting(e.target.value);
-            }}
-          />
+          
           <Button
             style={{ marginTop: 8 }}
             onClick={async () => {
               /* look how you call setPurpose on your contract: */
               /* notice how you pass a call back for tx updates too */
-              const result = tx(writeContracts.HelloWorld.setGreeting(newGreeting), update => {
+              const result = tx(writeContracts.Counter.inc(), update => {
                 console.log("📡 Transaction Update:", update);
                 if (update && (update.status === "confirmed" || update.status === 1)) {
                   console.log(" 🍾 Transaction " + update.hash + " finished!");
