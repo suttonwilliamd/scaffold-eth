@@ -12,11 +12,11 @@ describe("My Dapp", function () {
     setTimeout(done, 2000);
   });
 
-  describe("YourContract", function () {
-    it("Should deploy YourContract", async function () {
-      const YourContract = await ethers.getContractFactory("YourContract");
+  describe("HelloWorld", function () {
+    it("Should deploy HelloWorld", async function () {
+      const HelloWorld = await ethers.getContractFactory("HelloWorld");
 
-      myContract = await YourContract.deploy();
+      myContract = await HelloWorld.deploy();
     });
 
     describe("setPurpose()", function () {

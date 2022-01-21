@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Address, Balance, Events } from "../components";
 
 export default function ExampleUI({
-  purpose,
+  greeting,
   address,
   mainnetProvider,
   localProvider,
@@ -15,7 +15,7 @@ export default function ExampleUI({
   readContracts,
   writeContracts,
 }) {
-  const [newPurpose, setNewPurpose] = useState("loading...");
+  const [newGreeting, setGreeting] = useState("loading...");
 
   return (
     <div>
@@ -24,12 +24,12 @@ export default function ExampleUI({
       */}
       <div style={{ border: "1px solid #cccccc", padding: 16, width: 400, margin: "auto", marginTop: 64 }}>
         <h2>Example UI:</h2>
-        <h4>purpose: {purpose}</h4>
+        <h4>ing: {greeting}</h4>
         <Divider />
         <div style={{ margin: 8 }}>
           <Input
             onChange={e => {
-              setNewPurpose(e.target.value);
+              setGreeting(e.target.value);
             }}
           />
           <Button
@@ -37,7 +37,7 @@ export default function ExampleUI({
             onClick={async () => {
               /* look how you call setPurpose on your contract: */
               /* notice how you pass a call back for tx updates too */
-              const result = tx(writeContracts.YourContract.setPurpose(newPurpose), update => {
+              const result = tx(writeContracts.HelloWorld.setGreeting(newGreeting), update => {
                 console.log("📡 Transaction Update:", update);
                 if (update && (update.status === "confirmed" || update.status === 1)) {
                   console.log(" 🍾 Transaction " + update.hash + " finished!");
@@ -56,7 +56,7 @@ export default function ExampleUI({
               console.log(await result);
             }}
           >
-            Set Purpose!
+            Set Greeting!
           </Button>
         </div>
         <Divider />

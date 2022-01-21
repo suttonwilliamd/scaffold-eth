@@ -11,8 +11,8 @@ import { ethers } from "ethers";
  */
 function Home({ yourLocalBalance, readContracts }) {
   // you can also use hooks locally in your component of choice
-  // in this case, let's keep track of 'purpose' variable from our contract
-  const purpose = useContractReader(readContracts, "YourContract", "purpose");
+  // in this case, let's keep track of 'greeting' variable from our contract
+  const greeting = useContractReader(readContracts, "HelloWorld", "greeting");
 
   return (
     <div>
@@ -26,7 +26,7 @@ function Home({ yourLocalBalance, readContracts }) {
           packages/react-app/src/views/Home.jsx
         </span>
       </div>
-      {!purpose?<div style={{ margin: 32 }}>
+      {!greeting?<div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>👷‍♀️</span>
         You haven't deployed your contract yet, run
         <span
@@ -42,12 +42,12 @@ function Home({ yourLocalBalance, readContracts }) {
           </span> to deploy your first contract!
       </div>:<div style={{ margin: 32 }}>
         <span style={{ marginRight: 8 }}>🤓</span>
-        The "purpose" variable from your contract is{" "}
+        The "greeting" variable from your contract is{" "}
         <span
           className="highlight"
           style={{ marginLeft: 4, /* backgroundColor: "#f9f9f9", */ padding: 4, borderRadius: 4, fontWeight: "bolder" }}
         >
-          {purpose}
+          {greeting}
         </span>
       </div>}
 
